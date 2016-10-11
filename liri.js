@@ -8,7 +8,7 @@
     var request = require('request');
     var inquirer = require('inquirer');
     var keys = require('./keys');
-    // var responseData = "";
+    
     
 
 
@@ -52,11 +52,15 @@ function Tweets(){
             if (!error) {
                 // console.log(tweets);
                 for(var i = 0; i < 20; i++) {
+                        console.log("\n============== Tweet " + [i] + " ==============\n");
                         console.log(tweets[i].text);
                         console.log("Created At: " + tweets[i].created_at);
-                        console.log("===================================");
+                        // console.log(tweets);
 
-	  		fs.appendFile("log.txt", tweets[i].text + "\nCreated At: " + tweets[i].created_at + "\n \n", function(err){
+	  		fs.appendFile("log.txt", "\n============== Tweet " + [i] + " ==============\n"
+              + tweets[i].text 
+              + "\nCreated At: " + tweets[i].created_at 
+              + "\n", function(err){
                   if(err) 
                   throw err;});
 
@@ -93,7 +97,7 @@ function Spotify(){
                     return;
                 }
             
-                // console.log(data);
+                // console.log(data.tracks);
                 console.log("\n============Spotify Data================\n")
                 console.log("artist : " + data.tracks.items[0].artists[0].name);
                 console.log("song : " + data.tracks.items[0].name);
@@ -148,6 +152,7 @@ function movie(){
 
 
                     // console.log("The movie's rating is: " + JSON.parse(body)["imdbRating"]);
+                    console.log("\n====== Movie Data ======\n");
                     console.log("This movie's title is: " + JSON.parse(body).Title);
                     console.log("This movie was released in: " + JSON.parse(body).Year);
                     console.log("This movie is rated: " + JSON.parse(body).Rated);
