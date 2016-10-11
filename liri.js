@@ -79,10 +79,10 @@ function Spotify(){
                 }
             
                 // console.log(data);
-                console.log("===DEFAULT=== artist : " + data.tracks.items[0].artists[0].name);
-                console.log("===DEFAULT=== song : " + data.tracks.items[0].name);
-                console.log("===DEFAULT=== link: " + data.tracks.items[0].preview_url);
-                console.log("===DEFAULT=== album : " + data.tracks.items[0].album.name);
+                console.log("===DEFAULT SPOTIFY DATA=== artist : " + data.tracks.items[0].artists[0].name);
+                console.log("===DEFAULT SPOTIFY DATA=== song : " + data.tracks.items[0].name);
+                console.log("===DEFAULT SPOTIFY DATA=== link: " + data.tracks.items[0].preview_url);
+                console.log("===DEFAULT SPOTIFY DATA=== album : " + data.tracks.items[0].album.name);
             });
 
     }else{
@@ -94,10 +94,16 @@ function Spotify(){
                 }
             
                 // console.log(data);
+                console.log("\n============Spotify Data================\n")
                 console.log("artist : " + data.tracks.items[0].artists[0].name);
                 console.log("song : " + data.tracks.items[0].name);
                 console.log("link: " + data.tracks.items[0].preview_url);
                 console.log("album : " + data.tracks.items[0].album.name);
+                console.log("\n============End of Spotify Data================\n")
+
+                fs.appendFile("log.txt", "\n====== Spotify Data ======\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
+                data.tracks.items[0].artists[0].name + "\nAlbum: " + data.tracks.items[0].album.name +
+                "\nPreview Link: " + data.tracks.items[0].preview_url + "\n\n", function(err) {if(err) throw err;});
             });
     };
 
@@ -154,6 +160,19 @@ function movie(){
                     console.log("This movie's made this much at the Boxoffice: " + JSON.parse(body).BoxOffice);
                     // console.log(JSON.parse(body));
                     
+                    fs.appendFile("log.txt", "\n====== Movie Data ======\n\nMovie Title: " + JSON.parse(body).Title
+                     + "\nReleased: " + JSON.parse(body).Year
+                     + "\nRated: " + JSON.parse(body).Rated
+                     + "\nMade in: " + JSON.parse(body).Country
+                     + "\nLanguage in: " + JSON.parse(body).Language 
+                     + "\nPlot Summary: " + JSON.parse(body).Plot
+                     + "\nActors Include: " + JSON.parse(body).Actors
+                     + "\nTomato Rating: " + JSON.parse(body).tomatoRating
+                     + "\nLink to Reviews: " + JSON.parse(body).tomatoURL
+                     + "\nMoney made at Boxoffice: " + JSON.parse(body).BoxOffice 
+                     + "\n\n", function(err) {if(err) throw err;});
+
+
                     }
             });/*end of request*/
 
@@ -185,6 +204,13 @@ function Random(){
                                 console.log("song : " + data.tracks.items[0].name);
                                 console.log("link: " + data.tracks.items[0].preview_url);
                                 console.log("album : " + data.tracks.items[0].album.name);
+
+                                fs.appendFile("log.txt", "\n====== Do What It Says Info ======\n\nArtist: " + data.tracks.items[0].artists[0].name
+                                + "\nSong: " + data.tracks.items[0].name
+                                + "\nLink: " + data.tracks.items[0].preview_url
+                                + "\nAlbum: " + data.tracks.items[0].album.name
+                                + "\n\n", function(err) {if(err) throw err;});
+
                             });
             });
 
