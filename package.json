@@ -1,0 +1,29 @@
+{
+  "name": "liri",
+  "version": "1.0.0",
+  "description": "comand_prompt_app",
+  "main": "liri.js",
+  "dependencies": {
+    "inquirer": "^1.2.1",
+    "request": "^2.75.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "do-what-it-says"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GRamirez2/liri.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "George Ramirez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GRamirez2/liri/issues"
+  },
+  "homepage": "https://github.com/GRamirez2/liri#readme"
+}
