@@ -83,10 +83,15 @@ function Spotify(){
                 }
             
                 // console.log(data);
+                console.log("\n********* You supplied no song data, so the default song to search is Mr Jones by the Counting Crows *********\n");
                 console.log("===DEFAULT SPOTIFY DATA=== artist : " + data.tracks.items[0].artists[0].name);
                 console.log("===DEFAULT SPOTIFY DATA=== song : " + data.tracks.items[0].name);
                 console.log("===DEFAULT SPOTIFY DATA=== link: " + data.tracks.items[0].preview_url);
                 console.log("===DEFAULT SPOTIFY DATA=== album : " + data.tracks.items[0].album.name);
+
+                fs.appendFile("log.txt", "\n====== Default Spotify Data, NO SONG GIVEN ======\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
+                data.tracks.items[0].artists[0].name + "\nAlbum: " + data.tracks.items[0].album.name +
+                "\nPreview Link: " + data.tracks.items[0].preview_url + "\n\n", function(err) {if(err) throw err;});
             });
 
     }else{
@@ -198,26 +203,36 @@ function Random(){
             // console.log(dArray3);
             
 
-                    spotify.search({ type: 'track', query: dArray3 }, function(err, data) {
+                    spotify.search({ type: 'track', query: dArray3}, function(err, data) {
                                 if ( err ) {
                                     console.log('Error occurred: ' + err);
                                     return;
                                 }
                             
-                                // console.log(data);
-                                console.log("artist : " + data.tracks.items[0].artists[0].name);
-                                console.log("song : " + data.tracks.items[0].name);
-                                console.log("link: " + data.tracks.items[0].preview_url);
-                                console.log("album : " + data.tracks.items[0].album.name);
+                                // console.log(data.tracks.items[0].artist);
+                                // var spotObject = data.tracks.items[0].artist;
+                                for (var i = 0; i < 20; i ++){
+                                    // console.log(data.tracks.items[i].artists[0].name)
+                                    if(data.tracks.items[i].artists[0].name == 'Toro y Moi'){
+                                        
+                                        console.log("\n**** Reading from random.txt, looking for song 'Lilly' by the group Toro y Moi == very obscure, hard to find *****\n")
+                                        console.log("artist : " + data.tracks.items[i].artists[0].name);
+                                        console.log("song : " + data.tracks.items[i].name);
+                                        console.log("link: " + data.tracks.items[i].preview_url);
+                                        console.log("album : " + data.tracks.items[i].album.name);
+                                        
 
-                                fs.appendFile("log.txt", "\n====== Do What It Says Info ======\n\nArtist: " + data.tracks.items[0].artists[0].name
-                                + "\nSong: " + data.tracks.items[0].name
-                                + "\nLink: " + data.tracks.items[0].preview_url
-                                + "\nAlbum: " + data.tracks.items[0].album.name
-                                + "\n\n", function(err) {if(err) throw err;});
+                                        fs.appendFile("log.txt", "\n====== Do What It Says Info ======\n\nArtist: " + data.tracks.items[i].artists[0].name
+                                        + "\nSong: " + data.tracks.items[i].name
+                                        + "\nLink: " + data.tracks.items[i].preview_url
+                                        + "\nAlbum: " + data.tracks.items[i].album.name
+                                        + "\n\n", function(err) {if(err) throw err;});
 
-                            });
-            });
+                                           }/**end of if statement */
+                                };/**end of for loop */
+
+                            });/**end of spotify.search */
+            });/**end of fs.readfile */
 
 };/**end of Random fucntion */
 
