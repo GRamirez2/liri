@@ -8,6 +8,7 @@
     var request = require('request');
     var inquirer = require('inquirer');
     var keys = require('./keys');
+    var timeStamp = new Date().toDateString();
     
     
 
@@ -52,12 +53,12 @@ function Tweets(){
             if (!error) {
                 // console.log(tweets);
                 for(var i = 0; i < 20; i++) {
-                        console.log("\n============== Tweet " + [i] + " ==============\n");
+                        console.log("\n============== Tweet " + [i] + " ======== "+timeStamp+" ======\n");
                         console.log(tweets[i].text);
                         console.log("Created At: " + tweets[i].created_at);
                         // console.log(tweets);
 
-	  		fs.appendFile("log.txt", "\n============== Tweet " + [i] + " ==============\n"
+	  		fs.appendFile("log.txt", "\n============== Tweet " + [i] + " ======== "+timeStamp+" ======\n"
               + tweets[i].text 
               + "\nCreated At: " + tweets[i].created_at 
               + "\n", function(err){
@@ -83,13 +84,13 @@ function Spotify(){
                 }
             
                 // console.log(data);
-                console.log("\n********* You supplied no song data, so the default song to search is Mr Jones by the Counting Crows *********\n");
+                console.log("\n********* You supplied no song data, so the default song to search is Mr Jones by the Counting Crows **** "+timeStamp+" *****\n");
                 console.log("===DEFAULT SPOTIFY DATA=== artist : " + data.tracks.items[0].artists[0].name);
                 console.log("===DEFAULT SPOTIFY DATA=== song : " + data.tracks.items[0].name);
                 console.log("===DEFAULT SPOTIFY DATA=== link: " + data.tracks.items[0].preview_url);
                 console.log("===DEFAULT SPOTIFY DATA=== album : " + data.tracks.items[0].album.name);
 
-                fs.appendFile("log.txt", "\n====== Default Spotify Data, NO SONG GIVEN ======\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
+                fs.appendFile("log.txt", "\n====== Default Spotify Data, NO SONG GIVEN === "+timeStamp+" ===\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
                 data.tracks.items[0].artists[0].name + "\nAlbum: " + data.tracks.items[0].album.name +
                 "\nPreview Link: " + data.tracks.items[0].preview_url + "\n\n", function(err) {if(err) throw err;});
             });
@@ -103,14 +104,14 @@ function Spotify(){
                 }
             
                 // console.log(data.tracks);
-                console.log("\n============Spotify Data================\n")
+                console.log("\n============Spotify Data==== "+timeStamp+" ============\n")
                 console.log("artist : " + data.tracks.items[0].artists[0].name);
                 console.log("song : " + data.tracks.items[0].name);
                 console.log("link: " + data.tracks.items[0].preview_url);
                 console.log("album : " + data.tracks.items[0].album.name);
-                console.log("\n============End of Spotify Data================\n")
+                console.log("\n============End of Spotify Data====== "+timeStamp+" ==========\n")
 
-                fs.appendFile("log.txt", "\n====== Spotify Data ======\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
+                fs.appendFile("log.txt", "\n====== Spotify Data ==== "+timeStamp+" ==\n\nSong Name: " + data.tracks.items[0].name + "\nArtist: " +
                 data.tracks.items[0].artists[0].name + "\nAlbum: " + data.tracks.items[0].album.name +
                 "\nPreview Link: " + data.tracks.items[0].preview_url + "\n\n", function(err) {if(err) throw err;});
             });
@@ -133,6 +134,7 @@ function movie(){
 
 
             // console.log("The movie's rating is: " + JSON.parse(body)["imdbRating"]);
+            console.log("=======DEFAULT==== "+timeStamp+" ===========\n")
             console.log("==DEFAULT==This movie's title is: " + JSON.parse(body).Title);
             console.log("==DEFAULT==This movie was released in: " + JSON.parse(body).Year);
             console.log("==DEFAULT==This movie is rated: " + JSON.parse(body).Rated);
@@ -157,7 +159,7 @@ function movie(){
 
 
                     // console.log("The movie's rating is: " + JSON.parse(body)["imdbRating"]);
-                    console.log("\n====== Movie Data ======\n");
+                    console.log("\n====== Movie Data ==== "+timeStamp+" ==\n");
                     console.log("This movie's title is: " + JSON.parse(body).Title);
                     console.log("This movie was released in: " + JSON.parse(body).Year);
                     console.log("This movie is rated: " + JSON.parse(body).Rated);
@@ -170,7 +172,7 @@ function movie(){
                     console.log("This movie's made this much at the Boxoffice: " + JSON.parse(body).BoxOffice);
                     // console.log(JSON.parse(body));
                     
-                    fs.appendFile("log.txt", "\n====== Movie Data ======\n\nMovie Title: " + JSON.parse(body).Title
+                    fs.appendFile("log.txt", "\n====== Movie Data === "+timeStamp+" ===\n\nMovie Title: " + JSON.parse(body).Title
                      + "\nReleased: " + JSON.parse(body).Year
                      + "\nRated: " + JSON.parse(body).Rated
                      + "\nMade in: " + JSON.parse(body).Country
@@ -215,14 +217,14 @@ function Random(){
                                     // console.log(data.tracks.items[i].artists[0].name)
                                     if(data.tracks.items[i].artists[0].name == 'Toro y Moi'){
                                         
-                                        console.log("\n**** Reading from random.txt, looking for song 'Lilly' by the group Toro y Moi == very obscure, hard to find *****\n")
+                                        console.log("\n**** Reading from random.txt, looking for song 'Lilly' by the group Toro y Moi = "+timeStamp+" = very obscure, hard to find *****\n")
                                         console.log("artist : " + data.tracks.items[i].artists[0].name);
                                         console.log("song : " + data.tracks.items[i].name);
                                         console.log("link: " + data.tracks.items[i].preview_url);
                                         console.log("album : " + data.tracks.items[i].album.name);
                                         
 
-                                        fs.appendFile("log.txt", "\n====== Do What It Says Info ======\n\nArtist: " + data.tracks.items[i].artists[0].name
+                                        fs.appendFile("log.txt", "\n====== Do What It Says Info === "+timeStamp+" ===\n\nArtist: " + data.tracks.items[i].artists[0].name
                                         + "\nSong: " + data.tracks.items[i].name
                                         + "\nLink: " + data.tracks.items[i].preview_url
                                         + "\nAlbum: " + data.tracks.items[i].album.name
