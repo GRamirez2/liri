@@ -15,7 +15,7 @@ exports.twitterKeys = {
 
 #liri command lines
 
-node liri.js my-tweets
+####node liri.js my-tweets
 
 Will console.log your 20 most recent tweets
 
