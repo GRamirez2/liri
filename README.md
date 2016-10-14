@@ -13,9 +13,11 @@ exports.twitterKeys = {
   access_token_key: 'paste your token key here',
   access_token_secret: 'paste your token secret here',}
 
-node liri.js my-tweets
+#liri command lines
 
-Pulls up moszabo's 20 most recent tweets
+node liri.js my-tweets
+Will console.log your 20 most recent tweets
+
 node liri.js spotify-this-song "song title"
 
 Will pull up the top request with this song title from Spotify
