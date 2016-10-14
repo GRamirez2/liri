@@ -8,10 +8,10 @@ In your keys.js file supply the information Twitter needs to access your account
 Your keys.js file should look exactly like this:
 
 exports.twitterKeys = {
-  consumer_key: '<input here>',
-  consumer_secret: '<input here>',
-  access_token_key: '<input here>',
-  access_token_secret: '<input here>',}
+  consumer_key: 'paste your key here',
+  consumer_secret: 'paste your key here',
+  access_token_key: 'paste your token key here',
+  access_token_secret: 'paste your token secret here',}
 
 node liri.js my-tweets
 
