@@ -16,6 +16,7 @@ exports.twitterKeys = {
 #liri command lines
 
 node liri.js my-tweets
+
 Will console.log your 20 most recent tweets
 
 node liri.js spotify-this-song "song title"
