@@ -5,15 +5,14 @@ In this project, I made LIRI. LIRI is like iPhone's SIRI. However, while SIRI is
 
 To use use liri.js you need to create a keys.js file. 
 In your keys.js file supply the information Twitter needs to access your account. 
-Your keys.js file should look ecactly like this:
-==============================
+Your keys.js file should look exactly like this:
+
 exports.twitterKeys = {
   consumer_key: '<input here>',
   consumer_secret: '<input here>',
   access_token_key: '<input here>',
-  access_token_secret: '<input here>',
-}
-===============================
+  access_token_secret: '<input here>',}
+
 node liri.js my-tweets
 
 Pulls up moszabo's 20 most recent tweets
